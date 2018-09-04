@@ -176,6 +176,9 @@
 		margin-bottom: 40px;
 	}
 
+	.textwidget{
+		    margin: 44px;
+	}
 	/*MEDIA QUERIES*/
 
 		@media only screen and (max-width: 900px) {
