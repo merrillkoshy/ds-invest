@@ -167,7 +167,7 @@
 	    color: #000;
 	    position: fixed;
 	    bottom: 13%;
-	    left: 46%;
+	    left: 96%;
 	    text-align: center;
 	    cursor: pointer;
 	    display: none; 
@@ -225,5 +225,8 @@
 	    }
 	    .imgBox .img{    	
 	    	height: 348px !important;	
+	    }
+	    .up{
+	    	left:46% !important;
 	    }
 	}
