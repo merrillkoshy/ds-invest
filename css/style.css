@@ -160,6 +160,33 @@
 	    padding: 16px;
 	}
 
+	.up{
+	    border: 1px solid #fff;
+	    border-radius: 50%;
+	    background: #FFF;
+	    color: #000;
+	    position: fixed;
+	    bottom: 13%;
+	    left: 46%;
+	    text-align: center;
+	    cursor: pointer;
+	    display: none; 
+	}
+
+	/*when mouse hover on up button, button will be go up and down in 1 second*/
+	.up:hover{animation: move 1s linear}
+	@keyframes move{
+	  10%{
+	    bottom: 12%;
+	  }
+	  50%{
+	    bottom: 8%;
+	  }
+	  100%{
+	    bottom: 10%;
+	  }
+	}
+
 	@media screen and (max-height: 450px) {
 	  .sidenav {padding-top: 15px;}
 	  .sidenav a {font-size: 18px;}
