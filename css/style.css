@@ -271,6 +271,22 @@
     	font-weight: bold;
     	font-size: 18px;
 	}
+
+	#row > form > input[type="submit"]{
+		margin-top: 5%;
+    	background: #ff3d2f;
+    	padding: 5%;
+	    padding-left: 9%;
+	    padding-right: 9%;
+	    color: white;
+	    font-weight: bold;
+	}
+	body > div.uname > a{
+		position: relative;
+    	left: 70%;
+    	background-color: #b49856 !important;
+    	font-weight: bold;
+	}
 	
 	/*MEDIA QUERIES*/
 

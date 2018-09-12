@@ -1,8 +1,13 @@
 <div class="uname">
 <?php
 session_start();
-echo  "Welcome ".$_SESSION['username'];
+if (empty($_SESSION['username'])) {
+    header("location: /business_opportunities.php/");
+}else{
+  echo  "Welcome ".$_SESSION['username'];
+}
 ?>
+<a class="btn btn-primary btnD" href="/logout.php">Log Out</a>
 </div>
 
 <!DOCTYPE html>

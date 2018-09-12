@@ -89,8 +89,8 @@
         </form>
       </div>
       <div class="bottom-log">  
-        <p>Not yet Registered? Join us Now !</p>        
-        <a href="https://diplomatssummit.com/kyc-and-personal-intro/"><img src="https://diplomatssummit.com/Registration_assets/join.jpg" "></a>
+        <p style="font-weight:  bold;padding-left: 10%;">To access Investment Opportunities, Register now</p>        
+        <a href="/kyc-and-personal-intro/"><img src="/Registration_assets/join.jpg" "></a>
       </div> 
   </div>
 <div id="mySidenav" class="sidenav">
