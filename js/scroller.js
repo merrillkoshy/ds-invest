@@ -30,11 +30,24 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft= "0";
+    document.getElementById("main").style.marginRight= "0";
     document.body.style.backgroundColor = "white";
     document.getElementById("close").style.display = "none";
-    document.getElementById("myBtn").style.display="block"; 
+    document.getElementById("myBtn").style.display="block";
+    document.getElementById("if1").style.display = "none"; 
     document.getElementById("container-fluid").style.opacity=1;
 
+}
+
+function login(){  
+  document.getElementById("if1").style.width = "350px";
+  document.getElementById("main").style.marginRight = "350px";
+  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+  document.getElementById("if1").style.display = "block";
+  document.getElementById("container-fluid").style.opacity=0.5;     
+  // var x="<?php ex(); ?>";
+  // alert(x);
+  // return false;
 }
 
 $(document).ready(function () {

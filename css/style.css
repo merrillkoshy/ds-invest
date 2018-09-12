@@ -134,7 +134,21 @@
 	    padding-top: 60px;
 	}
 
-	.sidenav a {
+	.lognav {
+	    height: 100%;
+	    width: 0;
+	    position: fixed;
+	    z-index: 1;
+	    top: 0;
+	    right: 0;
+	    background-color: #fff;
+	    overflow-x: hidden;
+	    transition: 0.5s;
+	    padding-top: 60px;
+}
+
+
+	.sidenav a, .lognav a {
 	    padding: 8px 8px 8px 32px;
 	    text-decoration: none;
 	    font-size: 25px;
@@ -143,11 +157,11 @@
 	    transition: 0.3s;
 	}
 
-	.sidenav a:hover {
+	.sidenav a, .lognav a:hover {
 	    color: #f1f1f1;
 	}
 
-	.sidenav .closebtn {
+	.sidenav .closebtn, .lognav .closebtn {
 	    position: absolute;
 	    top: 0;
 	    right: 25px;
@@ -157,6 +171,7 @@
 
 	#main {
 	    transition: margin-left .5s;
+	    transition: margin-right .5s;
 	    padding: 16px;
 	}
 
@@ -188,8 +203,8 @@
 	}
 
 	@media screen and (max-height: 450px) {
-	  .sidenav {padding-top: 15px;}
-	  .sidenav a {font-size: 18px;}
+	  .sidenav, .lognav {padding-top: 15px;}
+	  .sidenav a, .lognav a{font-size: 18px;}
 	}
 
 	@keyframes mymove {
@@ -206,6 +221,57 @@
 	.textwidget{
 		    margin: 44px;
 	}
+
+	#row{
+		    padding: 19%;
+    	background-color: white;
+    	margin: 22px;
+	}
+
+	#if1 > a > img{
+		margin: 2%;
+    	width: 95%;
+    	height: 18%;
+    	transition: 0.5s;
+	}
+
+	#if1 > div.bottom-log{
+		background-color: white;
+    	padding: 8%;
+    	transition: 0.5s;
+	}
+
+	#if1 > div.bottom-log > a > img{
+	    width: 100%;
+		height: 20%;
+		transition: 0.5s;
+	}
+
+	#loghead > img{
+		height: 99.5px;
+	    padding-right: 5px;
+	    margin-right: 5px;
+	    border-right: #ff3d2e 3px solid;
+	}
+	#loghead > h3{
+		margin-top: 69px;
+    	color: #9f7d3a;
+    	font-size: 20px;
+    	font-family: Economica;
+	}
+
+	#loghead{
+		display: inline-flex;
+		margin-left: 12%;
+	}
+
+	body > div.uname{
+		background-color: #ff3d2e;
+    	color: white;
+    	font-weight: bold;
+    	font-size: 18px;
+	}
+	
 	/*MEDIA QUERIES*/
 
 		@media only screen and (max-width: 900px) {

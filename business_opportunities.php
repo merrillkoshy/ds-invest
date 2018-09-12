@@ -1,3 +1,37 @@
+<?php  
+    session_start();
+    //connect to database
+    $servername = "localhost";
+    $username = "dslogin";
+    $pwd = "login";
+    $dbname = "login";
+
+    $db =mysqli_connect($servername, $username, $pwd, $dbname);
+
+    if (isset($_POST['Login_btn'])){
+    
+      $username= mysqli_real_escape_string($db,$_POST['username']); 
+      $password= mysqli_real_escape_string($db,$_POST['password']);
+       
+
+      $password =md5($password); //hash password before storing for security
+      $sql="SELECT * FROM users WHERE username='$username' AND password='$password'";
+      $result=mysqli_query($db,$sql);
+
+      if(mysqli_num_rows($result) ==1){
+        $_SESSION['message'] = "Welcome";
+        $_SESSION['username'] = "$username";        
+        header("location: /redirected.php/");
+         
+      }else{
+        //failed
+        echo '<script language="javascript">';
+        echo 'alert("Username or password incorrect!")';
+        echo '</script>';
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +52,8 @@
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="/Investment_opportunities/assets/css/style.css">
-  
+	<link rel="stylesheet" href="/Investment_opportunities/assets/css/style.css"> 
+
 </head>
 
 <body>
@@ -34,6 +68,30 @@
 	    <a href="https://diplomatssummit.com/kyc-and-personal-intro/" style="position: relative; left: 34%;"><img src="/Investment_opportunities/assets/img/join-1.jpg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=640&amp;w=425" style="height:140.5px;"></a>
 	  </div>    
 <!-- NAVIGATION -->
+<!-- <iframe id="if1" style="display:none;" src="demo_iframe.html" ></iframe> -->  
+    <div id="if1" class="lognav" style="display:none;" >
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div id="loghead">
+      <img src="/Investment_opportunities/assets/img/logo.png?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=640&amp;w=425">     
+      
+      <h3>LOGIN</h3>
+    </div>          
+      <div id="row">                
+        <form action="business_opportunities.php" method="post">
+          <div id="us" style="margin-top: 12%;">Username:
+            <input type="text" class="textInput" name="username" />
+          </div>    
+          <div id="pas">Password:  
+            <input type="password" class="textInput" name="password" />
+          </div>  
+          <input type="submit" name="Login_btn" value="Login" />          
+        </form>
+      </div>
+      <div class="bottom-log">  
+        <p>Not yet Registered? Join us Now !</p>        
+        <a href="https://diplomatssummit.com/kyc-and-personal-intro/"><img src="https://diplomatssummit.com/Registration_assets/join.jpg" "></a>
+      </div> 
+  </div>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="https://diplomatssummit.com">Home</a>
@@ -47,8 +105,8 @@
 	  	<p style="font-family: economica; color: #9f7c3a;text-align:  center; font-size: 27px;">Sailesh Nathan’s Profile</p>			
 	  	<div class="textwidget">
 	  		<div class="ds-image">
-	  			<a href="https://diplomatssummit.com/sailesh-nathans-profile/">
-	  				<img src="https://diplomatssummit.com/wp-content/uploads/2017/03/Sailesh-Nathans-Profile1.jpg" alt="Sailesh-Nathan's-Profile1" width="20%" class="alignnone size-full wp-image-1572" style="border-radius: 15px;   border: 1px solid;width: 187px;height: 205px;">
+	  			<a href="/sailesh-nathans-profile/">
+	  				<img src="/wp-content/uploads/2017/03/Sailesh-Nathans-Profile1.jpg" alt="Sailesh-Nathan's-Profile1" width="20%" class="alignnone size-full wp-image-1572" style="border-radius: 15px;   border: 1px solid;width: 187px;height: 205px;">
 	  			</a>
 	  		</div>
 	  	</div>  	
@@ -65,9 +123,9 @@
       <div class="container">
       	<div class="head-para">Why do you invest? Because you want greater returns? No. that’s not all. It’s because you are a ‘Future-Person’. You’re a visionary who believes in taking every small step towards achieving a greater goal. While your assets grow by each passing day, your value and goodwill are built on their own. For possessing such an invaluable asset - wisdom, investment opportunities are nowhere to go. They are all here for you. Explore!
 		</div>
-        <div class="row sbox">
+        <div class="row sbox">          
           <div class="col-sm-4">
-            <div class="box">
+            <div class="box">              
               <div class="imgBox">
                 <img src="/Investment_opportunities/assets/img/gateway-of-india.jpg?auto=compress&cs=tinysrgb&dpr=2&h=640&w=425" class="img-responsive" alt="" style="position: relative;left: -45%">
                 <div class="inmage">
@@ -82,7 +140,9 @@
 					Assess Agriculture Arena</br>
 					Review Real Estate Realm</br>
 					Scan Shipping Sector</p>
-                <a href="/business-opportunities-in-india/" class="btn btn-primary btnD">Read More</a>
+                <a href="javascript:void(0)" class="btn btn-primary btnD" onclick="login()">Read More</a>  
+                <!-- <a href="/login.php" class="btn btn-primary btnD">Read More</a>  -->
+                <!-- <a href="/business-opportunities-in-india/" class="btn btn-primary btnD">Read More</a> -->
               </div>
             </div>
           </div>
@@ -102,7 +162,10 @@
 					Experiment Energy</br>
 					Try Trade Trend</br>
 					Pick Professional Services</p>
-                <a href="/business-opportunities-in-seychelles/" class="btn btn-primary btnD">Read More</a>
+          <a href="javascript:void(0)" class="btn btn-primary btnD" onclick="login()">Read More</a>          
+          <!-- <a class="btn btn-primary btnD" onclick="login()" >Read More</a> -->           
+          <!-- <a href="/login.php" class="btn btn-primary btnD">Read More</a>  -->
+                <!-- <a href="/business-opportunities-in-seychelles/" class="btn btn-primary btnD">Read More</a> -->
               </div>
             </div>
           </div>
@@ -119,7 +182,9 @@
                 <p>	Preview Property with Vineyards</br>
 					Review Real Estate Realm</br>
 					Test Textile Territory</p>
-                <a href="/business-opportunities-in-italy/" class="btn btn-primary btnD">Read More</a>
+          <a href="javascript:void(0)" class="btn btn-primary btnD" onclick="login()">Read More</a>  
+          <!-- <a href="/login.php" class="btn btn-primary btnD">Read More</a>  -->
+                <!-- <a href="/business-opportunities-in-italy/" class="btn btn-primary btnD">Read More</a> -->
               </div>
             </div>
           </div>
@@ -137,7 +202,9 @@
               <div class="content">
                 <h3>GERMANY</h3>
                 <p>Explore E-mobility</p>
-                <a href="/investment-opportunities-in-germany/" class="btn btn-primary btnD">Read More</a>
+                <a href="javascript:void(0)" class="btn btn-primary btnD" onclick="login()">Read More</a>  
+                <!-- <a href="/login.php" class="btn btn-primary btnD">Read More</a>  -->
+                <!-- <a href="/investment-opportunities-in-germany/" class="btn btn-primary btnD">Read More</a> -->
               </div>
             </div>
           </div>
@@ -152,7 +219,9 @@
               <div class="content">
                 <h3>UNITED ARAB EMIRATES</h3>
                 <p>Preview Property (Hotel)</p>
-                <a href="/investment-opportunities-in-dubai/" class="btn btn-primary btnD">Read More</a>
+                <a href="javascript:void(0)" class="btn btn-primary btnD" onclick="login()">Read More</a>  
+                <!-- <a href="/login.php" class="btn btn-primary btnD">Read More</a>                 -->
+                <!-- /investment-opportunities-in-dubai/ -->
               </div>
             </div>
           </div>
@@ -167,7 +236,9 @@
               <div class="content">
                 <h3>AUSTRIA</h3>
                 <p>Preview Property (5-star Hotel)</p>
-                <a href="/investment-opportunities-in-austria/" class="btn btn-primary btnD">Read More</a>
+                <a href="javascript:void(0)" class="btn btn-primary btnD" onclick="login()">Read More</a>  
+                <!-- <a href="/login.php" class="btn btn-primary btnD">Read More</a>  -->
+                <!-- <a href="/investment-opportunities-in-austria/" class="btn btn-primary btnD">Read More</a> -->
               </div>
             </div>
           </div>
@@ -185,7 +256,9 @@
               <div class="content">
                 <h3>GHANA</h3>
                 <p>Promising Agriculture</p>
-                <a href="/ghana_investment/ghana.pdf" class="btn btn-primary btnD">Read More</a>
+                <a href="javascript:void(0)" class="btn btn-primary btnD" onclick="login()">Read More</a>  
+                <!-- <a href="/login.php" class="btn btn-primary btnD">Read More</a>  -->
+                <!-- <a href="/ghana_investment/ghana.pdf" class="btn btn-primary btnD">Read More</a> -->
               </div>
             </div>
           </div>
@@ -200,7 +273,9 @@
               <div class="content">
                 <h3>KENYA</h3>
                 <p>Happy Housing Development</p>
-                <a href="/housing-development-investment-opportunity-in-kenya/" class="btn btn-primary btnD">Read More</a>
+                <a href="javascript:void(0)" class="btn btn-primary btnD" onclick="login()">Read More</a>  
+                <!-- <a href="/login.php" class="btn btn-primary btnD">Read More</a>  -->
+                <!-- <a href="/housing-development-investment-opportunity-in-kenya/" class="btn btn-primary btnD">Read More</a> -->
               </div>
             </div>
           </div>
@@ -233,7 +308,9 @@
               <div class="content">
                 <h3>AUSTRALIA</h3>
                 <p>Preview Property (Winery)</p>
-                <a href="/investment-opportunities-in-australia/" class="btn btn-primary btnD">Read More</a>
+                <a href="javascript:void(0)" class="btn btn-primary btnD" onclick="login()">Read More</a>  
+                <!-- <a href="/login.php" class="btn btn-primary btnD">Read More</a>  -->
+                <!-- <a href="/investment-opportunities-in-australia/" class="btn btn-primary btnD">Read More</a> -->
               </div>
             </div>
           </div>
@@ -265,7 +342,7 @@
 		</div>
       </div>
     </div>
-  </section>
+  </section>  
 </div> 
 <footer>
   	<button class="up">  	
@@ -285,7 +362,7 @@
 </footer>
 
 
-<script type="text/javascript" src="/Investment_opportunities/assets/js/scroller.js"></script> 
+<script type="text/javascript" src="/Investment_opportunities/assets/js/scroller.js"></script>
 </body>
 
 </html>
