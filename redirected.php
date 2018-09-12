@@ -10,13 +10,14 @@ echo  "Welcome ".$_SESSION['username'];
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">	
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+  <link rel="shortcut icon" href="/DS_og.png" />	
   <meta name="description" content="Explore Investment Opportunities across the globe">
 	<meta property="og:title" content="Diplomats Summit" />
 	<meta property="og:url" content="https://diplomatssummit.com/" />
 	<meta property="og:type" content="website" />
 	<meta property="og:description" content="Investment Opportunities">
-	<meta property="og:image" content="https://diplomatssummit.com/DS_og.png">
+	<meta property="og:image" content="/DS_og.png">
 	<meta property="og:image:width" content="300" />
 	<meta property="og:image:height" content="300" />	
     	
