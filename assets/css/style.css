@@ -287,6 +287,32 @@
     	background-color: #b49856 !important;
     	font-weight: bold;
 	}
+	/* Modal Content */
+	.modal-content {
+	    background-color: #fefefe;
+	    margin: auto;
+	    padding: 20px;
+	    border: 1px solid #888;
+	    width: 80%;
+	    max-height: calc(154vh - 210px);
+    	overflow-y: auto;
+	}
+	
+
+	/* The Close Button */
+	.close {
+	    color: #aaaaaa;
+	    float: right;
+	    font-size: 28px;
+	    font-weight: bold;
+	}
+
+	.close:hover,
+	.close:focus {
+	    color: #000;
+	    text-decoration: none;
+	    cursor: pointer;
+	}
 	
 	/*MEDIA QUERIES*/
 
